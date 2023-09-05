@@ -73,7 +73,6 @@ def get_data():
     if request.data is not None:
         
             with open("data.json", 'r') as file:
-                # Read the contents of the file
                 data = file.read()
                 data = json.loads(data)
                 df = pd.read_json(data["df"])

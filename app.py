@@ -9,20 +9,18 @@ matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import seaborn as sn
 
-config = {
-    "origin":["http://localhost:3000"],
-    "methods":["OPTIONS","GET","POST"]
-}
-
+#config = {
+    #"origin":["http://localhost:3000"],
+    #"methods":["OPTIONS","GET","POST"]
+#}
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 CORS(app,resources={
-    "/analyze":config,
-    "/streamlit":config,
-    "/get_data":config,
-
+    "/analyze": {"origins": "https://risk-control-and-analysis-0974368b9653.herokuapp.com", "methods": ["OPTIONS", "GET", "POST"]},
+    "/streamlit":{"origins": "https://riskanalysis-f9a284bc46f5.herokuapp.com", "methods": ["OPTIONS", "GET", "POST"]},
+    "/get_data": {"origin":["http://localhost:3000"], "methods":["OPTIONS","GET","POST"]}
 })
 
 def analyze_excel_file(file):
@@ -41,7 +39,6 @@ def analyze_excel_file(file):
         "project_duration": sheet.cell(row=5, column=15).value,
     }
     return information
-
 
 @app.route("/analyze",methods = ['POST'])
 def analyze():

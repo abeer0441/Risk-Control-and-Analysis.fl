@@ -18,9 +18,9 @@ app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 CORS(app,resources={
-    "/analyze": {"origins": "https://risk-control-and-analysis-0974368b9653.herokuapp.com", "methods": ["OPTIONS", "GET", "POST"]},
-    "/streamlit":{"origins": "https://riskanalysis-f9a284bc46f5.herokuapp.com", "methods": ["OPTIONS", "GET", "POST"]},
-    "/get_data": {"origin":["http://localhost:3000"], "methods":["OPTIONS","GET","POST"]}
+    "/analyze": {"origins": "https://risk-analysis-and-control-b80708ff8ede.herokuapp.com/", "methods": ["OPTIONS", "GET", "POST"]},
+    "/streamlit":{"origins": "https://risk-analysis-and-control-b80708ff8ede.herokuapp.com", "methods": ["OPTIONS", "GET", "POST"]},
+    "/get_data": {"origin": "https://risk-analysis-and-control-b80708ff8ede.herokuapp.com" , "methods":["OPTIONS","GET","POST"]}
 })
 
 def analyze_excel_file(file):

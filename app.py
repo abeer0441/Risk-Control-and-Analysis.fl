@@ -9,18 +9,19 @@ matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import seaborn as sn
 
-#config = {
-    #"origin":["http://localhost:3000"],
-    #"methods":["OPTIONS","GET","POST"]
-#}
+config = {
+    "origin":["https://risk-control-and-analysis.netlify.app/"],
+    "methods":["OPTIONS","GET","POST"]
+}
 
 app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 CORS(app,resources={
-    "/analyze": {"origins": "https://risk-control-and-analysis.netlify.app", "methods": ["OPTIONS", "GET", "POST"]},
-    "/streamlit":{"origins": "https://risk-control-and-analysis.netlify.app", "methods": ["OPTIONS", "GET", "POST"]},
-    "/get_data": {"origin": "https://risk-control-and-analysis.netlify.app" , "methods":["OPTIONS","GET","POST"]}
+    "/analyze":config,
+    "/streamlit":config,
+    "/get_data":config,
+
 })
 
 def analyze_excel_file(file):
